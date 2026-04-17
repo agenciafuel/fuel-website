@@ -1,7 +1,10 @@
 import ParallaxGota from '@/components/home/parallax-gota';
 
-export default function ClientsSection() {
-    const clients = Array.from({ length: 9 }, (_, i) => ({
+export default function ClientsSection({ clients: dynamicClients = [] }: { clients?: any[] }) {
+    const clients = dynamicClients.length > 0 ? dynamicClients.map((client) => ({
+        src: client.image ? (client.image.startsWith('/assets') || client.image.startsWith('http') ? client.image : `/storage/${client.image}`) : '/assets/clientes/1.png',
+        alt: client.title,
+    })) : Array.from({ length: 9 }, (_, i) => ({
         src: `/assets/clientes/${i + 1}.png`,
         alt: `Cliente ${i + 1}`,
     }));

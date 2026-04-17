@@ -1,8 +1,17 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import SiteHeader from '@/components/home/site-header';
 import ParallaxGota from '@/components/home/parallax-gota';
 
-export default function Blog() {
+export default function Blog({ posts = [], categories = [], currentCategory = null }: any) {
+    const mainPost = posts.length > 0 ? posts[0] : null;
+    const secondaryPosts = posts.length > 1 ? posts.slice(1) : [];
+
+    const formatDate = (dateValue: string) => {
+        if (!dateValue || !dateValue.includes('-')) return dateValue;
+        const d = new Date(dateValue);
+        return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    };
+
     return (
         <>
             <Head title="Fuel — Nosso Blog">
@@ -57,76 +66,67 @@ export default function Blog() {
                     </div>
 
                     {/* Main post */}
-                    <article
-                        className="relative flex min-h-[300px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-6 md:min-h-[450px] lg:min-h-[600px] md:rounded-[40px] md:p-14 lg:p-16"
-                        style={{
-                            backgroundImage:
-                                'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.4) 100%), url("/assets/banner-home.png")',
-                        }}
-                    >
-                        {/* Main Content */}
-                        <div className="relative z-10 w-full lg:w-[80%]">
-                            <h2 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[50px] lg:text-[75px]">
-                                Como funcionam as etapas
-                                <br />
-                                para desenvolvimento
-                                <br />
-                                de um site
-                            </h2>
-                            <div className="mt-3 md:mt-4">
-                                <span className="font-roboto text-[10px] text-white/90 md:text-[16px] lg:text-[20px]">
-                                    <span className="font-bold text-white">11/12</span>{' '}
-                                    - publicado por <span className="font-bold text-white">fuel</span>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
+                    {mainPost && (
+                        <Link href={`/blog/${mainPost.slug}`}>
+                            <article
+                                className="relative flex min-h-[300px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-6 md:min-h-[450px] lg:min-h-[600px] md:rounded-[40px] md:p-14 lg:p-16"
+                                style={{
+                                    backgroundImage:
+                                        `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.4) 100%), url("${mainPost.image?.includes('http') ? mainPost.image : (mainPost.image ? '/storage/' + mainPost.image : '/assets/banner-home.png')}")`,
+                                }}
+                            >
+                                {/* Main Content */}
+                                <div className="relative z-10 w-full lg:w-[80%]">
+                                    <h2 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[50px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}}>
+                                    </h2>
+                                    <div className="mt-3 md:mt-4">
+                                        <span className="font-roboto text-[10px] text-white/90 md:text-[16px] lg:text-[20px]">
+                                            <span className="font-bold text-white">{formatDate(mainPost.created_at)}</span>{' '}
+                                            - publicado por <span className="font-bold text-white">fuel</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        </Link>
+                    )}
 
                     {/* Body Content */}
-                    <div className="mt-8 md:mt-16 w-full lg:w-[90%]">
-                        <p className="font-roboto text-[11px] leading-[1.8] text-[#c9c9c9] md:text-[14px] lg:text-[16px] text-justify md:text-left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-                            <br />
-                            <br />
-                            <span className="font-bold text-white block mb-4 text-[13px] md:text-[16px] lg:text-[20px]">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            </span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-                        </p>
-                    </div>
+                    {mainPost && (
+                        <div className="mt-8 md:mt-16 w-full lg:w-[90%]">
+                            <div className="font-roboto text-[11px] leading-[1.8] text-[#c9c9c9] md:text-[14px] lg:text-[16px] text-justify md:text-left markdown-body" dangerouslySetInnerHTML={{__html: mainPost.content || mainPost.description || mainPost.short_description}} />
+                        </div>
+                    )}
 
                     {/* Grid & Categories layout */}
                     <div className="mt-10 flex flex-row items-start justify-between gap-4 md:mt-14 md:gap-12 lg:mt-20">
                         {/* Left: small cards grid */}
                         <div className="grid w-[60%] grid-cols-1 gap-4 md:w-[65%] md:grid-cols-2 md:gap-8 lg:w-[65%]">
-                            {[1, 2, 3, 4].map((item, index) => (
-                                <article
-                                    key={item}
-                                    className={`relative flex min-h-[140px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-4 md:min-h-[220px] md:p-6 lg:rounded-[30px] ${
-                                        index > 1 ? 'hidden md:flex' : ''
-                                    }`}
-                                    style={{
-                                        backgroundImage:
-                                            'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 60%), url("/assets/banner-home.png")',
-                                    }}
-                                >
-                                    <div className="relative z-10 w-full">
-                                        <h3 className="font-roboto text-[11px] leading-[1.2] font-bold text-white md:text-[15px] lg:text-[18px]">
-                                            Como funcionam as etapas
-                                            <br />
-                                            para desenvolvimento
-                                            <br />
-                                            de um site
-                                        </h3>
-                                        <div className="mt-3 text-right">
-                                            <a href="#" className="font-roboto text-[10px] font-bold text-white transition-opacity hover:opacity-80 md:text-[13px]">
-                                                leia <span className="text-[#E30613]">+</span>
-                                            </a>
+                            {secondaryPosts.map((item: any, index: number) => (
+                                <Link key={index} href={`/blog/${item.slug}`}>
+                                    <article
+                                        className={`relative flex min-h-[140px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-4 md:min-h-[220px] md:p-6 lg:rounded-[30px] hover:opacity-90 transition-opacity`}
+                                        style={{
+                                            backgroundImage:
+                                                `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 60%), url("${item.image?.includes('http') ? item.image : (item.image ? '/storage/' + item.image : '/assets/banner-home.png')}")`,
+                                        }}
+                                    >
+                                        <div className="relative z-10 w-full">
+                                            <h3 className="font-roboto text-[11px] leading-[1.2] font-bold text-white md:text-[15px] lg:text-[18px]" dangerouslySetInnerHTML={{__html: item.title.replace(/\n/g, '<br />')}}>
+                                            </h3>
+                                            <div className="mt-3 text-right">
+                                                <span className="font-roboto text-[10px] font-bold text-white md:text-[13px]">
+                                                    leia <span className="text-[#E30613]">+</span>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </Link>
                             ))}
                             
+                            {secondaryPosts.length === 0 && (
+                                <p className="text-white">Nenhum outro post encontrado.</p>
+                            )}
+
                             {/* Carregar mais (Mobile inside Left column) */}
                             <div className="mt-2 flex justify-start md:hidden">
                                 <button className="font-roboto text-[10px] font-bold text-white transition-opacity hover:opacity-80">
@@ -142,23 +142,22 @@ export default function Blog() {
                                 Categorias
                             </h4>
                             <ul className="flex flex-col gap-2 md:gap-4 lg:gap-5">
-                                {[
-                                    'Branding',
-                                    'Performance',
-                                    'Gestão de Tráfego',
-                                    'Marca',
-                                    'Marketing',
-                                    'Redação',
-                                    'Social Media',
-                                    'Website'
-                                ].map((category) => (
-                                    <li key={category}>
-                                        <a
-                                            href="#"
-                                            className="font-roboto text-[9px] text-[#E30613] hover:text-white transition-colors md:text-[13px] lg:text-[15px]"
+                                <li>
+                                    <Link
+                                        href="/blog"
+                                        className={`font-roboto text-[9px] hover:text-white transition-colors md:text-[13px] lg:text-[15px] ${!currentCategory ? 'text-white font-bold' : 'text-[#E30613]'}`}
+                                    >
+                                        Todos
+                                    </Link>
+                                </li>
+                                {categories.map((category: any) => (
+                                    <li key={category.id}>
+                                        <Link
+                                            href={`/blog?category=${category.slug}`}
+                                            className={`font-roboto text-[9px] hover:text-white transition-colors md:text-[13px] lg:text-[15px] ${currentCategory === category.slug ? 'text-white font-bold' : 'text-[#E30613]'}`}
                                         >
-                                            {category}
-                                        </a>
+                                            {category.title}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

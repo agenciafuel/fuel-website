@@ -9,7 +9,13 @@ import ClientsSection from '@/components/home/clients-section';
 import ManifestoSection from '@/components/home/manifesto-section';
 import CTASection from '@/components/home/cta-section';
 
-export default function Home() {
+interface HomeProps {
+    posts: any[];
+    clients: any[];
+    portfolioItems: any[];
+}
+
+export default function Home({ posts, clients, portfolioItems }: HomeProps) {
     return (
         <>
             <Head title="Fuel — Seu desafio é o nosso combustível">
@@ -31,10 +37,10 @@ export default function Home() {
             <main className="overflow-x-hidden bg-black">
                 <HeroSection />
                 <AboutSection />
-                <PortfolioSection />
+                <PortfolioSection items={portfolioItems} />
                 <ServicesSection />
-                <BlogSection />
-                <ClientsSection />
+                <BlogSection posts={posts} />
+                <ClientsSection clients={clients} />
                 <ManifestoSection />
                 <CTASection />
             </main>

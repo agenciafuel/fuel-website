@@ -1,12 +1,14 @@
 import ParallaxGota from "./parallax-gota";
 
-export default function PortfolioSection() {
-    const portfolioItems = [
+export default function PortfolioSection({ items = [] }: { items?: any[] }) {
+    const portfolioItems = items.length > 0 ? items.map(item => ({
+        src: item.image ? (item.image.startsWith('/assets') || item.image.startsWith('http') ? item.image : `/storage/${item.image}`) : '/assets/portfolio/1.png',
+        alt: item.title,
+    })) : [
         { src: '/assets/portfolio/4.png', alt: 'Oak Berry Campaign' },
         { src: '/assets/portfolio/1.png', alt: 'Peptaris Branding' },
         { src: '/assets/portfolio/2.png', alt: 'Projeto N' },
         { src: '/assets/portfolio/3.png', alt: 'Spring League Social' },
-
     ];
 
     return (
