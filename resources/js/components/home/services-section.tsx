@@ -81,10 +81,10 @@ export default function ServicesSection() {
             </div>
 
 
-            <div className="relative z-10 flex w-full flex-col justify-center bg-[#e90728] py-8 md:py-14">
+            <div className="relative z-10 flex w-full flex-col justify-center bg-fuel-bg-red py-8 md:py-14">
 
                 <div className="mx-auto w-full max-w-7xl px-5 md:px-12 lg:px-20">
-                    <span className="block font-roboto text-[12px] italic text-white/90 md:text-2xl">
+                    <span className="block font-roboto text-[12px] italic text-white/90 md:text-[28px]">
                         especialidades
                     </span>
                 </div>

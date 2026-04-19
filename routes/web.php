@@ -12,6 +12,8 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home2');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/categoria/{slug}', [BlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::inertia('/404', 'public/not-found')->name('404');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {

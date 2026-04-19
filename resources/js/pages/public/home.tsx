@@ -7,7 +7,7 @@ import ServicesSection from '@/components/home/services-section';
 import BlogSection from '@/components/home/blog-section';
 import ClientsSection from '@/components/home/clients-section';
 import ManifestoSection from '@/components/home/manifesto-section';
-import CTASection from '@/components/home/cta-section';
+import Footer from '@/components/footer';
 
 interface HomeProps {
     posts: any[];
@@ -42,7 +42,7 @@ export default function Home({ posts, clients, portfolioItems }: HomeProps) {
                 <BlogSection posts={posts} />
                 <ClientsSection clients={clients} />
                 <ManifestoSection />
-                <CTASection />
+                <Footer />
             </main>
         </>
     );

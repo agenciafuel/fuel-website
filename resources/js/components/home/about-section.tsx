@@ -4,13 +4,13 @@ export default function AboutSection() {
     return (
         <section
             id="sobre"
-            className="relative z-10 overflow-visible bg-black py-16 md:py-28 lg:py-36"
+            className="relative overflow-visible bg-black py-16 md:py-28 lg:py-36"
         >
             <img
                 src="/assets/sobre/fuel-lettering.png"
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute top-1/2 z-0 h-auto w-full -translate-y-[20%]"
+                className="pointer-events-none absolute top-1/2 z-[5] h-auto w-full -translate-y-[20%]"
             />
 
 
@@ -59,12 +59,12 @@ export default function AboutSection() {
 
                     <div className="relative z-20 flex w-full flex-col items-end text-right md:w-full md:max-w-2xl">
                         <h2 className="flex flex-col items-end gap-1 font-roboto text-[32px] leading-[0.9] text-white md:gap-0 md:text-[70px] lg:text-[136px]">
-                            <div className="flex gap-2">
-                                <span className="font-bold">seus</span>
-                                <span className="font-light italic text-white/90">desafios</span>
+                            <div className="flex gap-2 lg:flex-col lg:gap-0">
+                                <span className="font-bold">seus</span> <br/>
+                                <span className="font-light italic text-white">desafios</span>
                             </div>
                             <span className="font-bold pt-1 md:pt-0">nosso</span>
-                            <span className="font-light italic text-[#E30613]">
+                            <span className="font-light italic text-fuel-red">
                                 combustível
                             </span>
                         </h2>
@@ -88,7 +88,7 @@ export default function AboutSection() {
                         <div className="mt-5 w-[65%] flex justify-end md:mt-8 md:w-full">
                             <a
                                 href="#contato"
-                                className="inline-block rounded-full bg-[#E30613] px-5 py-2 font-roboto text-[10px] font-bold text-white transition-colors hover:bg-red-700 md:px-6 md:py-2.5 md:text-sm"
+                                className="inline-block rounded-full bg-fuel-bg-red px-5 py-2 font-roboto text-[10px] font-bold text-white transition-colors hover:bg-fuel-bg-red md:px-6 md:py-2.5 md:text-sm"
                             >
                                 fale conosco
                             </a>

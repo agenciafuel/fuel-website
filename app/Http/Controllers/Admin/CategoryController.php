@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         return Inertia::render('admin/categories/Index', [
-            'data' => Category::latest()->get()
+            'data' => Category::withCount('posts')->latest()->get()
         ]);
     }
 

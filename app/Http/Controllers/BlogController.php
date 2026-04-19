@@ -21,15 +21,48 @@ class BlogController extends Controller
             });
         }
         
-        $posts = $query->get()->map(function ($post) {
-            $post->content = $post->content ? \Illuminate\Support\Str::markdown($post->content) : null;
-            return $post;
-        });
+        $posts = $query->get();
 
         return Inertia::render('public/blog', [
             'posts' => $posts,
-            'categories' => Category::all(),
+            'categories' => Category::withCount('posts')->get(),
             'currentCategory' => $categorySlug,
+        ]);
+    }
+
+    public function show(string $slug)
+    {
+        $post = Post::with('category')->where('slug', $slug)->firstOrFail();
+        $post->content = $post->content ? \Illuminate\Support\Str::markdown($post->content) : null;
+
+        $relatedPosts = Post::with('category')
+            ->where('id', '!=', $post->id)
+            ->when($post->category_id, function ($q) use ($post) {
+                $q->where('category_id', $post->category_id);
+            })
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return Inertia::render('public/blog-post', [
+            'post' => $post,
+            'relatedPosts' => $relatedPosts,
+            'categories' => Category::withCount('posts')->get(),
+        ]);
+    }
+
+    public function category(string $slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $posts = Post::with('category')
+            ->where('category_id', $category->id)
+            ->latest()
+            ->get();
+
+        return Inertia::render('public/blog-category', [
+            'category' => $category,
+            'posts' => $posts,
+            'categories' => Category::withCount('posts')->get(),
         ]);
     }
 }

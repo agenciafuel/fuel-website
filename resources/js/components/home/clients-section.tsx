@@ -1,14 +1,12 @@
 import ParallaxGota from '@/components/home/parallax-gota';
 
 export default function ClientsSection({ clients: dynamicClients = [] }: { clients?: any[] }) {
-    const clients = dynamicClients.length > 0 ? dynamicClients.map((client) => ({
+    const clients = dynamicClients.map((client) => ({
         src: client.image ? (client.image.startsWith('/assets') || client.image.startsWith('http') ? client.image : `/storage/${client.image}`) : '/assets/clientes/1.png',
         alt: client.title,
-    })) : Array.from({ length: 9 }, (_, i) => ({
-        src: `/assets/clientes/${i + 1}.png`,
-        alt: `Cliente ${i + 1}`,
     }));
 
+    if (clients.length === 0) return null;
     return (
         <section
             id="clientes"
@@ -47,13 +45,13 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
                             <br />
                             <span className="font-light italic">
                                 &{' '}
-                                <span className="text-[#c30f2b]">
+                                <span className="text-fuel-red">
                                     parceiros
                                 </span>
                             </span>
                         </h2>
 
-                        <p className="font-roboto text-[11px] leading-relaxed text-[#c9c9c9] md:text-[14px] lg:text-xl">
+                        <p className="font-roboto text-[11px] leading-relaxed text-white md:text-[14px] lg:text-xl">
                             Com quase uma década de experiência, sabemos que
                             marketing de verdade vai muito além de curtidas ou
                             tráfego pago. É planejamento, posicionamento,
@@ -65,9 +63,9 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
                         <div className="pt-2">
                             <a
                                 href="#contato"
-                                className="inline-flex items-center rounded-full bg-[#e90728] px-6 py-2.5 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-[#c8061f] md:text-xl"
+                                className="inline-flex items-center rounded-full bg-fuel-bg-red px-6 py-2.5 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-fuel-bg-red md:text-xl"
                             >
-                                veja no portfólio
+                                fale conosco
                             </a>
                         </div>
                     </div>

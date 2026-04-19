@@ -3,10 +3,7 @@ import SiteHeader from '@/components/home/site-header';
 import ParallaxGota from '@/components/home/parallax-gota';
 import Footer from '@/components/footer';
 
-export default function Blog({ posts = [], categories = [], currentCategory = null }: any) {
-    const mainPost = posts.length > 0 ? posts[0] : null;
-    const secondaryPosts = posts.length > 1 ? posts.slice(1) : [];
-
+export default function BlogCategory({ category, posts = [], categories = [] }: any) {
     const formatDate = (dateValue: string) => {
         if (!dateValue || !dateValue.includes('-')) return dateValue;
         const d = new Date(dateValue);
@@ -15,8 +12,8 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
 
     return (
         <>
-            <Head title="Fuel — Nosso Blog">
-                <meta name="description" content="Nosso Blog - Fuel Agency" />
+            <Head title={`Fuel — ${category.title}`}>
+                <meta name="description" content={category.description || `Posts sobre ${category.title} - Fuel Agency`} />
             </Head>
 
             <SiteHeader />
@@ -53,51 +50,43 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
                 />
 
                 <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
-                    <div className="mb-8 md:mb-12">
-                        <h1 className="font-roboto text-[40px] leading-[1.15] font-bold text-white md:text-[80px] lg:text-[136px]">
-                            <span className="font-bold">nosso </span>
-                            <span className="font-light text-fuel-red italic">
-                                blog
-                            </span>
-                        </h1>
+                    <div className="mb-6 md:mb-8">
+                        <Link href="/blog" className="inline-flex items-center gap-2 font-roboto text-[11px] text-gray-400 transition-colors hover:text-white md:text-sm">
+                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+                            voltar para o blog
+                        </Link>
                     </div>
 
-                    {mainPost && (
-                        <Link href={`/blog/${mainPost.slug}`}>
-                            <article
-                                className="relative flex min-h-[300px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-6 md:min-h-[450px] lg:min-h-[600px] md:rounded-[40px] md:p-14 lg:p-16"
-                                style={{
-                                    backgroundImage:
-                                        `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.4) 100%), url("${mainPost.image?.includes('http') || mainPost.image?.startsWith('/assets') ? mainPost.image : (mainPost.image ? '/storage/' + mainPost.image : '/assets/banner-home.png')}")`,
-                                }}
-                            >
-                                <div className="relative z-10 w-full lg:w-[80%]">
-                                    <h2 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[50px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
-                                    <div className="mt-3 md:mt-4">
-                                        <span className="font-roboto text-[10px] text-white/90 md:text-[16px] lg:text-[20px]">
-                                            <span className="font-bold text-white">{formatDate(mainPost.created_at)}</span>{' '}
-                                            - publicado por <span className="font-bold text-white">fuel</span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </article>
-                        </Link>
-                    )}
+                    <div className="mb-8 md:mb-12">
+                        <h1 className="font-roboto text-[40px] leading-[1.15] font-bold text-white md:text-[80px] lg:text-[136px]">
+                            <span className="font-light text-fuel-red italic">{category.title}</span>
+                        </h1>
+                        {category.description && (
+                            <p className="mt-4 font-roboto text-[12px] text-gray-400 md:text-[14px] lg:text-lg">
+                                {category.description}
+                            </p>
+                        )}
+                        <p className="mt-2 font-roboto text-[11px] text-gray-500 md:text-sm">
+                            {posts.length} post{posts.length !== 1 ? 's' : ''} encontrado{posts.length !== 1 ? 's' : ''}
+                        </p>
+                    </div>
 
-                    <div className="mt-10 flex flex-row items-start justify-between gap-4 md:mt-14 md:gap-12 lg:mt-20">
+                    <div className="flex flex-row items-start justify-between gap-4 md:gap-12">
                         <div className="grid w-[60%] grid-cols-1 gap-4 md:w-[65%] md:grid-cols-2 md:gap-8 lg:w-[65%]">
-                            {secondaryPosts.map((item: any, index: number) => (
+                            {posts.map((item: any, index: number) => (
                                 <Link key={index} href={`/blog/${item.slug}`}>
                                     <article
-                                        className={`relative flex min-h-[140px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-4 md:min-h-[220px] md:p-6 lg:rounded-[30px] hover:opacity-90 transition-opacity`}
+                                        className="relative flex min-h-[140px] w-full flex-col justify-end overflow-hidden rounded-[20px] bg-[#1a1a1a] bg-cover bg-center p-4 md:min-h-[220px] md:p-6 lg:rounded-[30px] hover:opacity-90 transition-opacity"
                                         style={{
-                                            backgroundImage:
-                                                `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 60%), url("${item.image?.includes('http') || item.image?.startsWith('/assets') ? item.image : (item.image ? '/storage/' + item.image : '/assets/banner-home.png')}")`,
+                                            backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 60%), url("${item.image?.includes('http') || item.image?.startsWith('/assets') ? item.image : (item.image ? '/storage/' + item.image : '/assets/banner-home.png')}")`,
                                         }}
                                     >
                                         <div className="relative z-10 w-full">
                                             <h3 className="font-roboto text-[11px] leading-[1.2] font-bold text-white md:text-[15px] lg:text-[18px]" dangerouslySetInnerHTML={{__html: item.title.replace(/\n/g, '<br />')}} />
-                                            <div className="mt-3 text-right">
+                                            <div className="mt-2 flex items-center justify-between">
+                                                <span className="font-roboto text-[9px] text-gray-400 md:text-[11px]">
+                                                    {formatDate(item.created_at)}
+                                                </span>
                                                 <span className="font-roboto text-[10px] font-bold text-white md:text-[13px]">
                                                     leia <span className="text-fuel-red">+</span>
                                                 </span>
@@ -106,9 +95,9 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
                                     </article>
                                 </Link>
                             ))}
-                            
-                            {secondaryPosts.length === 0 && posts.length <= 1 && (
-                                <p className="font-roboto text-[12px] text-gray-500 md:text-[14px]">Nenhum outro post encontrado.</p>
+
+                            {posts.length === 0 && (
+                                <p className="font-roboto text-[12px] text-gray-500 md:text-[14px]">Nenhum post encontrado nesta categoria.</p>
                             )}
                         </div>
 
@@ -120,20 +109,20 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
                                 <li>
                                     <Link
                                         href="/blog"
-                                        className={`font-roboto text-[9px] hover:text-white transition-colors md:text-[13px] lg:text-[15px] ${!currentCategory ? 'text-white font-bold' : 'text-fuel-red'}`}
+                                        className="font-roboto text-[9px] text-fuel-red hover:text-white transition-colors md:text-[13px] lg:text-[15px]"
                                     >
                                         Todos
                                     </Link>
                                 </li>
-                                {categories.map((category: any) => (
-                                    <li key={category.id}>
+                                {categories.map((cat: any) => (
+                                    <li key={cat.id}>
                                         <Link
-                                            href={`/blog/categoria/${category.slug}`}
-                                            className={`font-roboto text-[9px] hover:text-white transition-colors md:text-[13px] lg:text-[15px] ${currentCategory === category.slug ? 'text-white font-bold' : 'text-fuel-red'}`}
+                                            href={`/blog/categoria/${cat.slug}`}
+                                            className={`font-roboto text-[9px] hover:text-white transition-colors md:text-[13px] lg:text-[15px] ${category.slug === cat.slug ? 'text-white font-bold' : 'text-fuel-red'}`}
                                         >
-                                            {category.title}
-                                            {category.posts_count !== undefined && (
-                                                <span className="ml-1 text-gray-600">({category.posts_count})</span>
+                                            {cat.title}
+                                            {cat.posts_count !== undefined && (
+                                                <span className="ml-1 text-gray-600">({cat.posts_count})</span>
                                             )}
                                         </Link>
                                     </li>

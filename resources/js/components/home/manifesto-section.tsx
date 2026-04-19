@@ -1,8 +1,39 @@
 import ParallaxGota from '@/components/home/parallax-gota';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ManifestoSection() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [scrollX, setScrollX] = useState(0);
+
+    const texts = [
+        'COMBUSTÍVEL COMBUSTÍVEL',
+        'COMBUSTÍVEL COMBUSTÍVEL',
+        'COMBUSTÍVEL COMBUSTÍVEL',
+        'COMBUSTÍVEL COMBUSTÍVEL',
+    ];
+
+    useEffect(() => {
+        let animationId: number;
+        let position = 0;
+        const speed = 0.8;
+
+        const animate = () => {
+            position -= speed;
+            if (scrollRef.current) {
+                const totalWidth = scrollRef.current.scrollWidth / 2;
+                if (Math.abs(position) >= totalWidth) {
+                    position = 0;
+                }
+            }
+            setScrollX(position);
+            animationId = requestAnimationFrame(animate);
+        };
+
+        animationId = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(animationId);
+    }, []);
     return (
-        <section id="manifesto" className="relative overflow-visible bg-[#e90728] py-16 md:py-28 lg:py-36 z-20">
+        <section id="manifesto" className="relative overflow-visible bg-fuel-bg-red py-16 md:py-28 lg:py-36 z-20">
 
             <img
                 src="/assets/manifesto/fuel-lettering.png"
@@ -32,8 +63,8 @@ export default function ManifestoSection() {
             <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
 
                 <div className="max-w-4xl flex flex-col gap-4">
-                    <h2 className="text-[28px]">manifesto</h2>
-                    <p className="font-roboto text-[14px] text-white/85 md:text-[18px] lg:text-[55px] leading-none!">
+                    <h2 className="text-[28px] text-white">manifesto</h2>
+                    <p className="font-roboto text-[14px] text-white md:text-[18px] lg:text-[55px] leading-none!">
                         Quando sua comunicação
                         precisa de ajuda, é ai que a fuel
                         se faz necessaria. <strong>Seus desafios,
@@ -45,10 +76,21 @@ export default function ManifestoSection() {
             </div>
 
 
-            <div className="relative z-10 mt-14 overflow-hidden md:mt-20">
-                <p className="font-roboto whitespace-nowrap text-[52px] font-black uppercase leading-none tracking-tighter text-white md:text-[110px] lg:text-[170px] xl:text-[314px]">
-                    FUEL COMBUSTÍVEL COMBUSTÍVEL
-                </p>
+            <div className="relative z-10 mt-14 flex w-full overflow-hidden md:mt-20">
+                <div
+                    ref={scrollRef}
+                    className="flex whitespace-nowrap"
+                    style={{ transform: `translateX(${scrollX}px)` }}
+                >
+                    {texts.map((text, index) => (
+                        <p
+                            key={index}
+                            className="mr-8 font-roboto whitespace-nowrap text-[52px] font-black uppercase leading-none tracking-tighter text-white md:mr-16 md:text-[110px] lg:mr-24 lg:text-[170px] xl:mr-32 xl:text-[314px]"
+                        >
+                            {text}
+                        </p>
+                    ))}
+                </div>
             </div>
         </section>
     );
