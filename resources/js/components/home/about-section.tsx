@@ -22,22 +22,22 @@ export default function AboutSection() {
             <ParallaxGota
                 src="/assets/gotas/sobre/gota-left-blur.png"
                 speed={-0.1}
-                className="pointer-events-none absolute z-10 w-[50vw] bottom-[-15%] left-[-20%] md:w-[400px] md:-bottom-[15%] md:left-[0%] lg:w-[300px] lg:-bottom-[20%]"
+                className="hidden xl:block pointer-events-none absolute z-10 w-[50vw] bottom-[-15%] left-[-20%] md:w-[400px] md:-bottom-[15%] md:left-[0%] lg:w-[300px] lg:-bottom-[20%]"
             />
             <ParallaxGota
                 src="/assets/gotas/sobre/gota-right-blur.png"
                 speed={-0.12}
-                className="pointer-events-none absolute z-10 hidden w-48 right-[0%] top-[40%] md:block md:w-[300px] md:top-[45%] lg:top-[50%]"
+                className="pointer-events-none absolute z-10 hidden w-48 right-[0%] top-[40%] xl:block md:w-[300px] md:top-[45%] lg:top-[50%]"
             />
             <ParallaxGota
                 src="/assets/gotas/sobre/gota-left.png"
                 speed={-0.08}
-                className="absolute z-30 hidden w-24 top-[30%] left-[5%] md:block md:w-32 md:top-[35%] md:left-[8%] lg:w-[150px] lg:top-[37%] lg:left-[10%]"
+                className="absolute z-30 hidden w-24 top-[30%] left-[5%] md:block md:w-32 md:top-[15%] md:left-[8%] lg:w-[150px] lg:top-[37%] lg:left-[10%]"
             />
             <ParallaxGota
                 src="/assets/gotas/sobre/gotas.png"
                 speed={0.1}
-                className="absolute z-30 w-[120px] -top-[2%] -right-[5%] md:w-64 md:top-[10%] md:right-[20%] lg:w-[300px] lg:-top-[12%] lg:right-[27%]"
+                className="absolute z-30 w-[120px] -top-[2%] -right-[5%] md:w-64 md:-top-[12%] md:right-[20%] lg:w-[300px] lg:-top-[12%] lg:right-[27%]"
             />
             <ParallaxGota
                 src="/assets/gotas/sobre/gota-center.png"
@@ -46,21 +46,21 @@ export default function AboutSection() {
             />
 
             <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
-                <div className="relative flex min-h-[380px] w-full flex-col justify-center md:min-h-0 md:flex-row md:items-center md:justify-between lg:gap-16">
+                <div className="relative flex min-h-[380px] w-full flex-col justify-center md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-8 lg:gap-16">
                     
 
                     <div className="absolute left-[-5%] top-[15%] z-10 w-[55%] pointer-events-none md:pointer-events-auto md:relative md:left-auto md:top-auto md:mr-auto md:w-auto md:flex-shrink-0">
                         <img
                             src="/assets/gota-10-anos.png"
                             alt="10 anos de Fuel"
-                            className="h-auto w-full md:w-[380px] lg:w-[480px]"
+                            className="h-auto w-full md:w-[260px] lg:w-[360px] xl:w-[480px]"
                         />
                     </div>
 
                     <div className="relative z-20 flex w-full flex-col items-end text-right md:w-full md:max-w-2xl">
-                        <h2 className="flex flex-col items-end gap-1 font-roboto text-[36px] leading-[0.9] text-white md:gap-0 md:text-[70px] lg:text-[136px]">
+                        <h2 className="flex flex-col items-end gap-1 font-roboto text-[36px] leading-[0.9] text-white md:gap-0 md:text-[48px] lg:text-[80px] xl:text-[136px]">
                             <div className="flex gap-2 lg:flex-col lg:gap-0">
-                                <span className="font-bold">seus</span> <br/>
+                                <span className="font-bold">seus</span> 
                                 <span className="font-light italic text-white">desafios</span>
                             </div>
                             <span className="font-bold pt-1 md:pt-0">nosso</span>
@@ -70,7 +70,7 @@ export default function AboutSection() {
                         </h2>
 
                         <div className="mt-8 w-[65%] md:mt-12 md:w-full">
-                            <p className="font-roboto text-base text-[#e0e0e0] md:text-[20px] lg:text-4xl">
+                            <p className="font-roboto text-base text-[#e0e0e0] md:text-[18px] lg:text-[24px] xl:text-4xl">
                                 10 anos de{' '}
                                 <span className="font-bold text-white">
                                     energia intensa
@@ -78,7 +78,7 @@ export default function AboutSection() {
                             </p>
                         </div>
 
-                        <p className="mt-3 w-[65%] font-roboto text-[10px] leading-[1.6] text-white/90 md:mt-6 md:w-full md:max-w-md md:text-[12px] lg:text-xl">
+                        <p className="mt-3 w-[65%] font-roboto text-[10px] leading-[1.6] text-white/90 md:mt-6 md:w-full md:max-w-md md:text-[11px] lg:text-sm xl:text-xl">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt ut labore et dolore
                             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation

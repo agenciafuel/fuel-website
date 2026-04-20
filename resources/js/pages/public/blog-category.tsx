@@ -54,7 +54,7 @@ export default function BlogCategory({ category, posts = [], categories = [] }: 
                     </div>
 
                     <div className="mb-8 md:mb-12">
-                        <h1 className="font-roboto text-[40px] leading-[1.15] font-bold text-white md:text-[80px] lg:text-[136px]">
+                        <h1 className="font-roboto text-[40px] leading-[1.15] font-bold text-white md:text-[48px] lg:text-[80px] xl:text-[136px]">
                             <span className="font-light text-fuel-red italic">{category.title}</span>
                         </h1>
                         {category.description && (

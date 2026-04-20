@@ -50,7 +50,7 @@ export default function ServicesSection() {
     return (
         <section
             id="especialidades"
-            className="relative flex h-[60vh] md:h-[90vh] w-full flex-col justify-center overflow-visible z-20"
+            className="relative flex h-[60vh] md:h-[65vh] lg:h-[75vh] xl:h-[90vh] w-full flex-col justify-center overflow-visible z-20"
         >
 
 
@@ -62,12 +62,12 @@ export default function ServicesSection() {
             <ParallaxGota
                 src="/assets/gotas/especialidades/gota.png"
                 speed={0.08}
-                className="absolute z-30 w-[80px] -bottom-[8%] left-[40%] md:w-64 md:-bottom-[20%] md:left-[60%] lg:-bottom-[10%] lg:left-[52%] lg:w-[100px]"
+                className="absolute z-30 w-[80px] -bottom-[8%] left-[40%] md:w-[200px] md:-bottom-[6%] md:left-[60%] lg:-bottom-[10%] lg:left-[52%] lg:w-[100px]"
             />
             <ParallaxGota
                 src="/assets/gotas/especialidades/gota-blur-1.png"
                 speed={-0.12}
-                className="absolute z-30 w-[200px] top-[70%] -left-[10%] md:w-[450px] md:bottom-[35%] md:left-[15%] lg:-bottom-[16%] lg:w-[350px]"
+                className="absolute z-30 w-[200px] top-[70%] -left-[10%] md:w-[250px] md:bottom-[35%] md:left-[15%] lg:-bottom-[16%] lg:w-[350px]"
             />
 
 
@@ -84,7 +84,7 @@ export default function ServicesSection() {
             <div className="relative z-10 flex w-full flex-col justify-center bg-fuel-bg-red py-8 md:py-14">
 
                 <div className="mx-auto w-full max-w-7xl px-5 md:px-12 lg:px-20">
-                    <span className="block font-roboto text-base italic text-white/90 md:text-[28px]">
+                    <span className="block font-roboto text-base italic text-white/90 md:text-[20px] lg:text-[24px] xl:text-[28px]">
                         especialidades
                     </span>
                 </div>
@@ -99,7 +99,7 @@ export default function ServicesSection() {
                         {services.map((service, index) => (
                             <span
                                 key={index}
-                                className="mx-3 font-roboto text-[36px] font-bold tracking-tight text-white md:mx-4 md:text-[70px] lg:text-[137px]"
+                                className="mx-3 font-roboto text-[36px] font-bold tracking-tight text-white md:mx-4 md:text-[48px] lg:text-[80px] xl:text-[137px]"
                             >
                                 {service}
                                 <span className="mx-3 text-white md:mx-4">

@@ -71,7 +71,7 @@ export default function BlogPost({ post, relatedPosts = [], categories = [] }: a
                                     {post.category.title}
                                 </Link>
                             )}
-                            <h1 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[50px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: post.title.replace(/\n/g, '<br />')}} />
+                            <h1 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[36px] lg:text-[50px] xl:text-[75px]" dangerouslySetInnerHTML={{__html: post.title.replace(/\n/g, '<br />')}} />
                             <div className="mt-3 md:mt-4">
                                 <span className="font-roboto text-[10px] text-white/90 md:text-[16px] lg:text-[20px]">
                                     <span className="font-bold text-white">{formatDate(post.created_at)}</span>{' '}

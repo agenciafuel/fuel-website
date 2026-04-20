@@ -77,7 +77,7 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
 
 
                 <div className="flex flex-col gap-5 lg:w-1/2 lg:pt-2">
-                        <h2 className="font-roboto text-[36px] leading-none! font-bold text-white md:text-[36px] lg:text-[100px]">
+                        <h2 className="font-roboto text-[36px] leading-none! font-bold text-white md:text-[48px] lg:text-[70px] xl:text-[100px]">
                             <strong className="text-white">clientes</strong>
                             <br />
                             <span className="font-light italic">
@@ -88,7 +88,7 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
                             </span>
                         </h2>
 
-                        <p className="font-roboto text-[10px] leading-relaxed text-white md:text-[14px] lg:text-xl">
+                        <p className="font-roboto text-[10px] leading-relaxed text-white md:text-[12px] lg:text-sm xl:text-xl">
                             Com quase uma década de experiência, sabemos que
                             marketing de verdade vai muito além de curtidas ou
                             tráfego pago. É planejamento, posicionamento,
@@ -100,7 +100,7 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
                         <div className="pt-2">
                             <a
                                 href="#contato"
-                                className="inline-flex items-center rounded-full bg-fuel-bg-red px-6 py-2.5 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-fuel-bg-red md:text-xl"
+                                className="inline-flex items-center rounded-full bg-fuel-bg-red px-6 py-2.5 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-fuel-bg-red md:text-sm lg:text-base xl:text-xl"
                             >
                                 fale conosco
                             </a>

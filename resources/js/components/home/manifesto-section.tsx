@@ -56,15 +56,15 @@ export default function ManifestoSection() {
             <ParallaxGota
                 src="/assets/gotas/manifesto/gota-blur.png"
                 speed={-0.12}
-                className="absolute z-30 w-[150px] -bottom-[20%] -right-[10%] md:right-[0%] md:top-[35%] md:bottom-auto md:w-[450px] lg:top-[8%] lg:w-[350px]"
+                className="absolute z-30 w-[150px] -bottom-[20%] -right-[10%] md:right-[0%] md:top-[45%] md:bottom-auto md:w-[150px] lg:top-[8%] lg:w-[350px]"
             />
 
 
             <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
 
                 <div className="max-w-4xl flex flex-col gap-4">
-                    <h2 className="text-base lg:text-[28px] text-white">manifesto</h2>
-                    <p className="font-roboto text-lg text-white md:text-[18px] lg:text-[55px] leading-none!">
+                    <h2 className="text-base md:text-[18px] lg:text-[22px] xl:text-[28px] text-white">manifesto</h2>
+                    <p className="font-roboto text-lg text-white md:text-[22px] lg:text-[36px] xl:text-[55px] leading-none!">
                         Quando sua comunicação
                         precisa de ajuda, é ai que a fuel
                         se faz necessaria. <strong>Seus desafios,
@@ -85,7 +85,7 @@ export default function ManifestoSection() {
                     {texts.map((text, index) => (
                         <p
                             key={index}
-                            className="mr-8 font-roboto whitespace-nowrap text-[110px] font-black uppercase leading-none tracking-tighter text-white md:mr-16 md:text-[110px] lg:mr-24 lg:text-[170px] xl:mr-32 xl:text-[314px]"
+                            className="mr-8 font-roboto whitespace-nowrap text-[110px] font-black uppercase leading-none tracking-tighter text-white md:mr-16 md:text-[120px] lg:mr-24 lg:text-[170px] xl:mr-32 xl:text-[314px]"
                         >
                             {text}
                         </p>

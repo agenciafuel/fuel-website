@@ -104,7 +104,7 @@ export default function SiteHeader() {
                             <li key={index}>
                                 <button
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[48px] lg:text-[83px] ${isOpen
+                                    className={`cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[40px] lg:text-[60px] xl:text-[83px] ${isOpen
                                         ? 'translate-y-0 opacity-100'
                                         : 'translate-y-4 opacity-0'
                                         }`}
@@ -123,7 +123,7 @@ export default function SiteHeader() {
                 <div className="flex items-end lg:items-center justify-between lg:justify-end lg:gap-10 px-5 pb-6 md:px-10 md:pb-8 lg:px-20 lg:pb-10">
 
                     <div className="flex lg:flex-row flex-col lg:items-center gap-4 md:gap-6">
-                        <span className="font-roboto text-[10px] text-white md:text-lg text-left">
+                        <span className="font-roboto text-[10px] text-white md:text-sm lg:text-lg text-left">
                             <span className="font-bold">se inscreva</span>{' '} <br className='lg:hidden'/>
                             <span className="font-light italic">nos nossos canais</span>
                         </span>
@@ -162,7 +162,7 @@ export default function SiteHeader() {
                             e.preventDefault();
                             handleNavClick('#contato');
                         }}
-                        className="rounded-full bg-white px-5 py-2.5 font-roboto text-[11px] font-bold text-fuel-red transition-opacity hover:opacity-90 md:px-6 md:py-3 md:text-lg"
+                        className="rounded-full bg-white px-5 py-2.5 font-roboto text-[11px] font-bold text-fuel-red transition-opacity hover:opacity-90 md:px-6 md:py-3 md:text-sm lg:text-base xl:text-lg"
                     >
                         envie uma mensagem
                     </a>

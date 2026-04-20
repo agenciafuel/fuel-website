@@ -50,7 +50,7 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
 
                 <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
                     <div className="mb-8 md:mb-12">
-                        <h1 className="font-roboto text-[36px] leading-[1.15] font-bold text-white md:text-[80px] lg:text-[136px]">
+                        <h1 className="font-roboto text-[36px] leading-[1.15] font-bold text-white md:text-[48px] lg:text-[80px] xl:text-[136px]">
                             <span className="font-bold">nosso </span>
                             <span className="font-light text-fuel-red italic">
                                 blog
@@ -68,7 +68,7 @@ export default function Blog({ posts = [], categories = [], currentCategory = nu
                                 }}
                             >
                                 <div className="relative z-10 w-full lg:w-[80%]">
-                                    <h2 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[50px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
+                                    <h2 className="font-roboto text-[22px] leading-[1.1] font-bold text-white md:text-[36px] lg:text-[50px] xl:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
                                     <div className="mt-3 md:mt-4">
                                         <span className="font-roboto text-[10px] text-white/90 md:text-[16px] lg:text-[20px]">
                                             <span className="font-bold text-white">{formatDate(mainPost.created_at)}</span>{' '}

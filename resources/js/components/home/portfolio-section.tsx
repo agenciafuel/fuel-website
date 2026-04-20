@@ -26,7 +26,7 @@ export default function PortfolioSection({ items = [] }: { items?: any[] }) {
 
             <div className="relative z-10 w-full">
                 <div className="mx-auto mb-8 w-full max-w-7xl px-5 md:mb-12 md:px-12 lg:px-20">
-                    <h2 className="font-roboto text-[36px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
+                    <h2 className="font-roboto text-[36px] leading-[1.15] font-bold text-white md:text-[48px] lg:text-[80px] xl:text-[136px]">
                         <span className="font-bold">nosso </span>
                         <span className="font-light text-[#c30f2b] italic">
                             trabalho

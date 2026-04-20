@@ -37,7 +37,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section id="hero" className="relative h-[80vh] lg:h-screen w-full overflow-hidden bg-black z-10">
+        <section id="hero" className="relative h-[80vh] md:h-[90vh] lg:h-screen w-full overflow-hidden bg-black z-10">
 
             <div className="absolute inset-0 z-10">
                 <video

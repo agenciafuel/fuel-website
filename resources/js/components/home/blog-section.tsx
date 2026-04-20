@@ -29,7 +29,7 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
             <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
 
                 <div className="mb-8 md:mb-12">
-                    <h2 className="font-roboto  xl:text-left text-right text-[36px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
+                    <h2 className="font-roboto xl:text-left text-right text-[36px] leading-[1.15] font-bold text-white md:text-[48px] lg:text-[80px] xl:text-[136px]">
                         <span className="font-bold">nosso </span>
                         <span className="font-light text-[#c30f2b] italic">
                             blog
@@ -48,7 +48,7 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
                     >
 
                         <div className="absolute top-8 right-8 md:top-10 md:right-14 lg:top-20 lg:right-20">
-                            <span className="font-roboto text-[10px] text-white md:text-2xl">
+                            <span className="font-roboto text-[10px] text-white md:text-sm lg:text-lg xl:text-2xl">
                                 <span className="font-bold">{formatDate(mainPost.created_at)}</span> - publicado
                                 por <span className="font-bold">fuel</span>
                             </span>
@@ -56,11 +56,11 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
 
 
                         <div className="relative z-10 w-full lg:w-[65%]">
-                            <h3 className="font-roboto text-base leading-none font-bold text-white md:text-[45px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
-                            <p className="mt-6 font-roboto text-[10px] text-white md:text-xl">
+                            <h3 className="font-roboto text-base leading-none font-bold text-white md:text-[36px] lg:text-[50px] xl:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
+                            <p className="mt-6 font-roboto text-[10px] text-white md:text-sm lg:text-base xl:text-xl">
                                 {mainPost.short_description}
                             </p>
-                            <span className="group mt-6 inline-block font-roboto text-[10px] font-bold text-white md:text-[16px]">
+                            <span className="group mt-6 inline-block font-roboto text-[10px] font-bold text-white md:text-sm lg:text-[16px]">
                                 <span className="underline decoration-white underline-offset-4">
                                     leia
                                 </span>{' '}
