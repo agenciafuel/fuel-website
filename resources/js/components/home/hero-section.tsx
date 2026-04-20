@@ -37,7 +37,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section id="hero" className="relative h-screen w-full overflow-hidden bg-black z-10">
+        <section id="hero" className="relative h-[80vh] lg:h-screen w-full overflow-hidden bg-black z-10">
 
             <div className="absolute inset-0 z-10">
                 <video
@@ -52,7 +52,7 @@ export default function HeroSection() {
             </div>
 
 
-            <div className="absolute bottom-0 left-0 z-20 w-full">
+            <div className="absolute bottom-20 left-0 z-20 w-full">
                 <div className="relative flex w-full items-center overflow-hidden pb-6 md:pb-10 lg:pb-14">
                     <div
                         ref={scrollRef}
@@ -73,11 +73,14 @@ export default function HeroSection() {
             </div>
 
 
-            <div className="absolute -bottom-6 left-5 z-20 md:-bottom-8 md:left-10 lg:left-20">
+            <div className="absolute -bottom-6 left-5 z-20 md:-bottom-8">
                 <span className="font-roboto text-[10px] tracking-[0.15em] text-white md:text-[11px]">
                     role para baixo
                 </span>
             </div>
+
+            {/* Transição suave para a próxima seção */}
+            <div className="absolute bottom-0 left-0 z-30 h-32 w-full bg-gradient-to-t from-black to-transparent pointer-events-none" />
         </section>
     );
 }

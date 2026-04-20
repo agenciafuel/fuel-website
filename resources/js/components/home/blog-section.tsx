@@ -23,13 +23,13 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
             <ParallaxGota
                 src="/assets/gotas/portfolio/gota.png"
                 speed={-0.08}
-                className="absolute z-30 w-16 -top-[2%] right-[5%] md:w-24 md:right-[15%] md:top-[5%] lg:w-[80px]"
+                className="hidden xl:block absolute z-30 w-16 -top-[2%] right-[5%] md:w-24 md:right-[15%] md:top-[5%] lg:w-[80px]"
             />
 
             <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
 
                 <div className="mb-8 md:mb-12">
-                    <h2 className="font-roboto text-[26px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
+                    <h2 className="font-roboto  xl:text-left text-right text-[36px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
                         <span className="font-bold">nosso </span>
                         <span className="font-light text-[#c30f2b] italic">
                             blog
@@ -40,7 +40,7 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
 
                 <Link href={`/blog/${mainPost.slug}`}>
                     <article
-                        className="relative flex min-h-[450px] w-full flex-col justify-center overflow-hidden rounded-[30px] bg-[#1a1a1a] bg-cover bg-center p-8 md:min-h-[550px] md:rounded-[40px] md:p-14 lg:p-20"
+                        className="relative flex min-h-[250px] w-full flex-col justify-center overflow-hidden rounded-[30px] bg-[#1a1a1a] bg-cover bg-center p-8 md:min-h-[550px] md:rounded-[40px] md:p-14 lg:p-20"
                         style={{
                             backgroundImage:
                                 `linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%), url("${mainPost.image?.includes('http') || mainPost.image?.startsWith('/assets') ? mainPost.image : (mainPost.image ? '/storage/' + mainPost.image : '/assets/banner-home.png')}")`,
@@ -48,7 +48,7 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
                     >
 
                         <div className="absolute top-8 right-8 md:top-10 md:right-14 lg:top-20 lg:right-20">
-                            <span className="font-roboto text-[12px] text-white md:text-2xl">
+                            <span className="font-roboto text-[10px] text-white md:text-2xl">
                                 <span className="font-bold">{formatDate(mainPost.created_at)}</span> - publicado
                                 por <span className="font-bold">fuel</span>
                             </span>
@@ -56,11 +56,11 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
 
 
                         <div className="relative z-10 w-full lg:w-[65%]">
-                            <h3 className="font-roboto text-[32px] leading-none font-bold text-white md:text-[45px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
-                            <p className="mt-6 font-roboto text-[12px] text-white md:text-xl">
+                            <h3 className="font-roboto text-base leading-none font-bold text-white md:text-[45px] lg:text-[75px]" dangerouslySetInnerHTML={{__html: mainPost.title.replace(/\n/g, '<br />')}} />
+                            <p className="mt-6 font-roboto text-[10px] text-white md:text-xl">
                                 {mainPost.short_description}
                             </p>
-                            <span className="group mt-6 inline-block font-roboto text-[14px] font-bold text-white md:text-[16px]">
+                            <span className="group mt-6 inline-block font-roboto text-[10px] font-bold text-white md:text-[16px]">
                                 <span className="underline decoration-white underline-offset-4">
                                     leia
                                 </span>{' '}
@@ -83,7 +83,7 @@ export default function BlogSection({ posts = [] }: { posts?: any[] }) {
                                     }}
                                 >
                                     <div className="relative z-10 w-full">
-                                        <h3 className="font-roboto text-[11px] leading-[1.2] font-bold text-white md:text-[14px] lg:text-[16px]" dangerouslySetInnerHTML={{__html: item.title.replace(/\n/g, '<br />')}} />
+                                        <h3 className="font-roboto text-base leading-[1.2] font-bold text-white lg:text-[16px]" dangerouslySetInnerHTML={{__html: item.title.replace(/\n/g, '<br />')}} />
                                         <div className="mt-3 text-right">
                                             <span className="font-roboto text-[10px] font-bold text-white md:text-[11px]">
                                                 leia <span className="text-[#E30613]">+</span>

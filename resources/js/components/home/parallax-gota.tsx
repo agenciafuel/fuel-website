@@ -8,7 +8,7 @@ interface ParallaxGotaProps {
 }
 
 export default function ParallaxGota({ src, speed, className = '', alt = 'Gota decorativa' }: ParallaxGotaProps) {
-    const { ref, offset } = useParallax(speed);
+    const { ref, offset } = useParallax(speed * 1.4);
 
     return (
         <img

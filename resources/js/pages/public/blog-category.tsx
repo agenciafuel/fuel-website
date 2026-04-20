@@ -43,11 +43,7 @@ export default function BlogCategory({ category, posts = [], categories = [] }: 
                     speed={-0.12}
                     className="absolute top-[40%] -left-[10%] z-10 w-[200px] opacity-70 md:w-[350px] lg:w-[500px]"
                 />
-                <ParallaxGota
-                    src="/assets/gotas/sobre/gota-left.png"
-                    speed={0.05}
-                    className="absolute bottom-[20%] left-[30%] z-10 w-[20px] md:w-[30px] lg:w-[40px]"
-                />
+                
 
                 <div className="relative z-20 mx-auto max-w-7xl px-5 md:px-12 lg:px-20">
                     <div className="mb-6 md:mb-8">

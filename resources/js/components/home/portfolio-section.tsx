@@ -16,17 +16,17 @@ export default function PortfolioSection({ items = [] }: { items?: any[] }) {
             <ParallaxGota
                 src="/assets/gotas/portfolio/gota.png"
                 speed={-0.1}
-                className="absolute z-30 w-16 right-[5%] top-[5%] md:w-32 md:right-[40%] md:top-[20%] lg:w-[100px] lg:top-[10%]"
+                className="hidden xl:block absolute z-30 w-16 right-[5%] top-[5%] md:w-32 md:right-[40%] md:top-[20%] lg:w-[100px] lg:top-[10%]"
             />
             <ParallaxGota
                 src="/assets/gotas/portfolio/gota-2.png"
                 speed={0.08}
-                className="absolute z-30 w-[150px] -bottom-[10%] -left-[10%] md:left-[60%] md:top-[20%] md:w-64 lg:left-[22%] lg:top-[60%] lg:w-[200px]"
+                className="hidden xl:block  absolute z-30 w-[150px] -bottom-[10%] -left-[10%] md:left-[60%] md:top-[20%] md:w-64 lg:left-[22%] lg:top-[60%] lg:w-[200px]"
             />
 
             <div className="relative z-10 w-full">
                 <div className="mx-auto mb-8 w-full max-w-7xl px-5 md:mb-12 md:px-12 lg:px-20">
-                    <h2 className="font-roboto text-[26px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
+                    <h2 className="font-roboto text-[36px] leading-[1.15] font-bold text-white md:text-[36px] lg:text-[136px]">
                         <span className="font-bold">nosso </span>
                         <span className="font-light text-[#c30f2b] italic">
                             trabalho

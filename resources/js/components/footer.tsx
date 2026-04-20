@@ -7,10 +7,10 @@ export default function Footer() {
             <div className="relative z-20 mx-auto w-full max-w-7xl px-5 md:px-12 lg:px-20">
                 <div className="flex w-full flex-col items-start gap-8 md:flex-row md:items-start md:justify-between">
                     <div className="w-full text-right md:max-w-3xl md:text-left">
-                        <h2 className="font-roboto text-[32px] leading-[1] text-white md:text-[36px] lg:text-[66px]">
-                            <span className="font-bold text-white">adoraríamos trabalhar</span>
+                        <h2 className="font-roboto text-[36px] leading-[1] text-white md:text-[36px] lg:text-[66px]">
+                            <span className="font-bold text-white">adoraríamos <br className='md:hidden'/> trabalhar</span>
                             <br />
-                            <span className="font-light italic text-fuel-red">com você e seu time.</span>
+                            <span className="font-light italic text-fuel-red">com você <br className='md:hidden'/>  e seu time.</span>
                         </h2>
                     </div>
 
@@ -49,12 +49,12 @@ export default function Footer() {
             </div>
 
 
-            <div className="relative z-20 mx-auto mt-12 flex w-full max-w-7xl flex-col items-start gap-10 px-5 md:mt-24 md:flex-row md:items-end md:justify-between md:px-12 lg:px-20">
+            <div className="relative z-20 mx-auto mt-12 items-end flex w-full max-w-7xl  gap-10 px-5 md:mt-24 md:flex-row md:items-end md:justify-between md:px-12 lg:px-20">
 
                 <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
                     <div className="flex flex-col md:block">
-                        <span className="font-roboto text-[14px] font-bold text-white md:text-lg">se inscreva</span>
-                        <span className="font-roboto text-[14px] font-light text-fuel-red italic md:ml-1 md:text-lg">nos nossos canais</span>
+                        <span className="font-roboto text-[10px] font-bold text-white md:text-lg">se inscreva</span>
+                        <span className="font-roboto text-[10px] font-light text-fuel-red italic md:ml-1 md:text-lg">nos nossos canais</span>
                     </div>
                     <div className="mt-1 flex gap-4 md:mt-0">
 
@@ -77,11 +77,11 @@ export default function Footer() {
                 </div>
 
 
-                <div className="flex items-center gap-2">
-                    <span className="font-roboto text-lg text-white">
+                <div className="flex items-center gap-2 pt-4 lg:pt-0">
+                    <span className="font-roboto text-[7px] lg:text-lg text-white">
                         criado e desenvolvido por <span className="font-bold text-white">@agencia.fuel</span>
                     </span>
-                    <img  src='/gota-vermelha.png' alt="Gota vermelha" className="w-6"/>
+                    <img  src='/gota-vermelha.png' alt="Gota vermelha" className="w-4 lg:w-6"/>
                 </div>
             </div>
         </section>

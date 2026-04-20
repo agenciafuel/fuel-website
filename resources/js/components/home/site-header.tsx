@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { router } from '@inertiajs/react';
 
 const menuItems = [
     { label: 'sobre nós', href: '#sobre' },
@@ -43,6 +44,13 @@ export default function SiteHeader() {
 
     const handleNavClick = (href: string) => {
         setIsOpen(false);
+        
+        // Se não estiver na home, redireciona para a home com a âncora
+        if (window.location.pathname !== '/') {
+            router.visit('/' + href);
+            return;
+        }
+
         const el = document.querySelector(href);
         if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
@@ -84,7 +92,7 @@ export default function SiteHeader() {
 
 
             <div
-                className={`fixed inset-0 z-[99] flex flex-col justify-between bg-[#E30613] transition-all duration-500 ease-in-out ${isOpen
+                className={`fixed inset-0 z-[99] flex flex-col justify-between bg-fuel-bg-red transition-all duration-500 ease-in-out ${isOpen
                     ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
@@ -96,7 +104,7 @@ export default function SiteHeader() {
                             <li key={index}>
                                 <button
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`font-roboto text-[32px] font-bold leading-[1.3] text-white transition-opacity duration-200 hover:opacity-70 md:text-[48px] lg:text-[56px] ${isOpen
+                                    className={`cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[48px] lg:text-[83px] ${isOpen
                                         ? 'translate-y-0 opacity-100'
                                         : 'translate-y-4 opacity-0'
                                         }`}
@@ -112,11 +120,11 @@ export default function SiteHeader() {
                 </nav>
 
 
-                <div className="flex items-center justify-between px-5 pb-6 md:px-10 md:pb-8 lg:px-20 lg:pb-10">
+                <div className="flex items-end lg:items-center justify-between lg:justify-end lg:gap-10 px-5 pb-6 md:px-10 md:pb-8 lg:px-20 lg:pb-10">
 
-                    <div className="flex items-center gap-4 md:gap-6">
-                        <span className="font-roboto text-[10px] text-white/80 md:text-[12px]">
-                            <span className="font-bold">se inscreva</span>{' '}
+                    <div className="flex lg:flex-row flex-col lg:items-center gap-4 md:gap-6">
+                        <span className="font-roboto text-[10px] text-white md:text-lg text-left">
+                            <span className="font-bold">se inscreva</span>{' '} <br className='lg:hidden'/>
                             <span className="font-light italic">nos nossos canais</span>
                         </span>
                         <div className="flex items-center gap-3 md:gap-4">
@@ -154,7 +162,7 @@ export default function SiteHeader() {
                             e.preventDefault();
                             handleNavClick('#contato');
                         }}
-                        className="rounded-full bg-white px-5 py-2.5 font-roboto text-[11px] font-bold text-[#E30613] transition-opacity hover:opacity-90 md:px-6 md:py-3 md:text-[13px]"
+                        className="rounded-full bg-white px-5 py-2.5 font-roboto text-[11px] font-bold text-fuel-red transition-opacity hover:opacity-90 md:px-6 md:py-3 md:text-lg"
                     >
                         envie uma mensagem
                     </a>
