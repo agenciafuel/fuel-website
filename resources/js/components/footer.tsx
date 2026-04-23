@@ -1,4 +1,5 @@
 import { usePage } from '@inertiajs/react';
+import { getWhatsAppLink } from '@/lib/utils';
 
 export default function Footer() {
     const { siteSettings } = usePage<{ siteSettings: Record<string, string> }>().props;
@@ -9,7 +10,7 @@ export default function Footer() {
             <div className="relative z-20 mx-auto w-full max-w-7xl px-5 md:px-12 lg:px-20">
                 <div className="flex w-full flex-col items-start gap-8 md:flex-row md:items-start md:justify-between">
                     <div className="w-full text-right md:max-w-3xl md:text-left">
-                        <h2 className="font-roboto text-[36px] leading-[1] text-white md:text-[40px] lg:text-[50px] xl:text-[66px]">
+                        <h2 className="font-roboto text-[36px] leading-none text-white md:text-[40px] lg:text-[50px] xl:text-[66px]">
                             <span className="font-bold text-white">adoraríamos <br className='md:hidden'/> trabalhar</span>
                             <br />
                             <span className="font-light italic text-fuel-red">com você <br className='md:hidden'/>  e seu time.</span>
@@ -30,7 +31,9 @@ export default function Footer() {
 
                 <div className="mt-8 flex justify-end md:mt-12 md:justify-start">
                     <a
-                        href="#contato"
+                        href={getWhatsAppLink(s.whatsapp, "Olá! Gostaria de falar com vocês sobre um projeto.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center rounded-full bg-fuel-bg-red px-2 py-2 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-fuel-bg-red md:px-6 md:py-3 md:text-sm lg:text-base xl:text-xl lg:px-8"
                     >
                        envie uma mensagem

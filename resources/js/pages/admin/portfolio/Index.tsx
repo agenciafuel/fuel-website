@@ -23,7 +23,7 @@ export default function Index({ data }: any) {
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                     {data.map((item: any) => (
                         <div key={item.id} className="group relative overflow-hidden rounded-xl border border-border bg-card">
-                            <div className="aspect-[3/4]">
+                            <div className="aspect-3/4">
                                 {item.image ? (
                                     <img
                                         src={item.image.startsWith('http') || item.image.startsWith('/assets') ? item.image : `/storage/${item.image}`}

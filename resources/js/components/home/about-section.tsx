@@ -1,6 +1,10 @@
 import ParallaxGota from '@/components/home/parallax-gota';
+import { usePage } from '@inertiajs/react';
+import { getWhatsAppLink } from '@/lib/utils';
 
 export default function AboutSection() {
+    const { siteSettings } = usePage<{ siteSettings: Record<string, string> }>().props;
+    const s = siteSettings || {};
     return (
         <section
             id="sobre"
@@ -87,7 +91,9 @@ export default function AboutSection() {
 
                         <div className="mt-5 w-[65%] flex justify-end md:mt-8 md:w-full">
                             <a
-                                href="#contato"
+                                href={getWhatsAppLink(s.whatsapp, "Olá! Gostaria de falar com vocês sobre um projeto.")}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-block rounded-full bg-fuel-bg-red px-5 py-2 font-roboto text-[10px] font-bold text-white transition-colors hover:bg-fuel-bg-red md:px-6 md:py-2.5 md:text-sm"
                             >
                                 fale conosco

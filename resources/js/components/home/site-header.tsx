@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
 import { router, usePage } from '@inertiajs/react';
-
-const menuItems = [
-    { label: 'sobre nós', href: '#sobre' },
-    { label: 'nosso trabalho', href: '#portfolio' },
-    { label: 'especialidades', href: '#especialidades' },
-    { label: 'nosso blog', href: '#blog' },
-    { label: 'clientes & parceiros', href: '#clientes' },
-    { label: 'manifesto', href: '#manifesto' },
-    { label: 'trabalhe conosco', href: '#contato' },
-];
+import { getWhatsAppLink } from '@/lib/utils';
 
 export default function SiteHeader() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { siteSettings } = usePage<{ siteSettings: Record<string, string> }>().props;
     const s = siteSettings || {};
+
+    const menuItems = [
+        { label: 'sobre nós', href: '#sobre' },
+        { label: 'nosso trabalho', href: '#portfolio' },
+        { label: 'especialidades', href: '#especialidades' },
+        { label: 'nosso blog', href: '#blog' },
+        { label: 'clientes & parceiros', href: '#clientes' },
+        { label: 'manifesto', href: '#manifesto' },
+        { label: 'trabalhe conosco', href: getWhatsAppLink(s.whatsapp, "Olá! Gostaria de saber sobre oportunidades para trabalhar com o time da Fuel."), external: true },
+    ];
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -103,18 +105,36 @@ export default function SiteHeader() {
                     <ul className="flex flex-col gap-1 md:gap-2">
                         {menuItems.map((item, index) => (
                             <li key={index}>
-                                <button
-                                    onClick={() => handleNavClick(item.href)}
-                                    className={`cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[40px] lg:text-[60px] xl:text-[83px] ${isOpen
-                                        ? 'translate-y-0 opacity-100'
-                                        : 'translate-y-4 opacity-0'
-                                        }`}
-                                    style={{
-                                        transitionDelay: isOpen ? `${index * 50 + 100}ms` : '0ms',
-                                    }}
-                                >
-                                    {item.label}
-                                </button>
+                                {item.external ? (
+                                    <a
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsOpen(false)}
+                                        className={`block cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[40px] lg:text-[60px] xl:text-[83px] ${isOpen
+                                            ? 'translate-y-0 opacity-100'
+                                            : 'translate-y-4 opacity-0'
+                                            }`}
+                                        style={{
+                                            transitionDelay: isOpen ? `${index * 50 + 100}ms` : '0ms',
+                                        }}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ) : (
+                                    <button
+                                        onClick={() => handleNavClick(item.href)}
+                                        className={`cursor-pointer font-roboto text-[32px] font-bold leading-none text-white transition-opacity duration-200 hover:opacity-70 md:text-[40px] lg:text-[60px] xl:text-[83px] ${isOpen
+                                            ? 'translate-y-0 opacity-100'
+                                            : 'translate-y-4 opacity-0'
+                                            }`}
+                                        style={{
+                                            transitionDelay: isOpen ? `${index * 50 + 100}ms` : '0ms',
+                                        }}
+                                    >
+                                        {item.label}
+                                    </button>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -148,11 +168,9 @@ export default function SiteHeader() {
 
 
                     <a
-                        href="#contato"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick('#contato');
-                        }}
+                        href={getWhatsAppLink(s.whatsapp, "Olá! Gostaria de falar com vocês sobre um projeto.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="rounded-full bg-white px-5 py-2.5 font-roboto text-[11px] font-bold text-fuel-red transition-opacity hover:opacity-90 md:px-6 md:py-3 md:text-sm lg:text-base xl:text-lg"
                     >
                         envie uma mensagem

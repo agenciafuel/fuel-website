@@ -10,3 +10,9 @@ export function cn(...inputs: ClassValue[]) {
 export function toUrl(url: NonNullable<InertiaLinkProps['href']>): string {
     return typeof url === 'string' ? url : url.url;
 }
+
+export function getWhatsAppLink(phone?: string, message: string = 'Olá! Gostaria de saber mais sobre a Fuel.'): string {
+    if (!phone) return '#';
+    const cleanPhone = phone.replace(/\D/g, '');
+    return `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+}

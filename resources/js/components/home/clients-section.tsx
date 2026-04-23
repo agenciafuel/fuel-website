@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { usePage } from '@inertiajs/react';
 import ParallaxGota from '@/components/home/parallax-gota';
+import { getWhatsAppLink } from '@/lib/utils';
 
 export default function ClientsSection({ clients: dynamicClients = [] }: { clients?: any[] }) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [scrollX, setScrollX] = useState(0);
+    const { siteSettings } = usePage<{ siteSettings: Record<string, string> }>().props;
+    const s = siteSettings || {};
 
     useEffect(() => {
         let animationId: number;
@@ -99,7 +103,9 @@ export default function ClientsSection({ clients: dynamicClients = [] }: { clien
 
                         <div className="pt-2">
                             <a
-                                href="#contato"
+                                href={getWhatsAppLink(s.whatsapp, "Olá! Gostaria de falar com vocês sobre um projeto.")}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center rounded-full bg-fuel-bg-red px-6 py-2.5 font-roboto text-[10px] font-bold tracking-wide text-white transition-all duration-300 hover:bg-fuel-bg-red md:text-sm lg:text-base xl:text-xl"
                             >
                                 fale conosco
