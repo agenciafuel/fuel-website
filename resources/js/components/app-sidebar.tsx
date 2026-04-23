@@ -1,7 +1,6 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { FileText, Image, Settings, Tag, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
-import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {
@@ -12,47 +11,39 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarGroup,
+    SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
+import { useCurrentUrl } from '@/hooks/use-current-url';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Posts',
         href: '/admin/posts',
-        icon: LayoutGrid,
+        icon: FileText,
     },
     {
         title: 'Categorias',
         href: '/admin/categories',
-        icon: LayoutGrid,
+        icon: Tag,
     },
     {
         title: 'Clientes',
         href: '/admin/clients',
-        icon: LayoutGrid,
+        icon: Users,
     },
     {
         title: 'Portfólio',
         href: '/admin/portfolio',
-        icon: LayoutGrid,
-    },
-];
-
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
+        icon: Image,
     },
 ];
 
 export function AppSidebar() {
+    const { isCurrentUrl } = useCurrentUrl();
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
@@ -69,10 +60,27 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={mainNavItems} />
+
+                <SidebarGroup className="mt-auto px-2 py-0">
+                    <SidebarGroupLabel>Sistema</SidebarGroupLabel>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                asChild
+                                isActive={isCurrentUrl('/admin/settings')}
+                                tooltip={{ children: 'Configurações' }}
+                            >
+                                <Link href="/admin/settings" prefetch>
+                                    <Settings />
+                                    <span>Configurações</span>
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroup>
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
